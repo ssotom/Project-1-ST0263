@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeriesService } from '../services/series.service';
 import { multi } from '../data';
 
 @Component({
@@ -29,9 +30,11 @@ export class HomeComponent implements OnInit {
     domain: ['#2E86C1', '#CFC0BB']
   };
 
-  constructor() {
-    this.multi1 = [multi[0]];
-    this.multi2 = [multi[1]];
+  constructor(seriesService: SeriesService) {
+    seriesService.getSeries().subscribe(response => {
+      this.multi1 = [response[0]]
+      this.multi2 = [response[1]]
+    });
   }
 
 }
