@@ -20,10 +20,12 @@ public class JwtProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
-    private static String JWT_SECRET = "Aji6KfBv6ktosBxmvQZjfsuaazJ3WBhLsMGtMGVg7LJumdW";
+    private final static String JWT_SECRET = "Aji6KfBv6ktosBxmvQZjfsuaazJ3WBhLsMGtMGVg7LJumdW";
     
-    private static int JWT_EXPIRATION = 86400; //Seconds
-
+    public final static long JWT_EXPIRATION = 24*360000L; //HOURS*milliseconds
+    
+    public final static long JWT_EXPIRATION_LONG = 180*86400000L; //DAYS*milliseconds
+    
 
     public String generateJwtToken(Authentication authentication) {
 
@@ -32,7 +34,16 @@ public class JwtProvider {
         return Jwts.builder()
         				.setSubject((userPrincipal.getUsername()))
 		                .setIssuedAt(new Date())
-		                .setExpiration(new Date((new Date()).getTime() + JWT_EXPIRATION*1000))
+		                .setExpiration(new Date((new Date()).getTime() + JWT_EXPIRATION))
+		                .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
+		                .compact();
+    }
+    
+    public String generateJwtToken(String username) {
+        return Jwts.builder()
+        				.setSubject(username)
+		                .setIssuedAt(new Date())
+		                .setExpiration(new Date((new Date()).getTime() + JWT_EXPIRATION_LONG))
 		                .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
 		                .compact();
     }

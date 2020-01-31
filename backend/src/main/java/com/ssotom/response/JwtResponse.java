@@ -4,6 +4,9 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class JwtResponse {
 	private String token;
 	private String username;
@@ -14,7 +17,9 @@ public class JwtResponse {
 		this.username = username;
 		this.authorities = authorities;
 	}
-
+	
+	@JsonSerialize
+	@JsonProperty("access_token")
 	public String getAccessToken() {
 		return token;
 	}

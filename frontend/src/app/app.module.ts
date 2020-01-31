@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
+import { BaseURL } from './services/baseURL';
+import { ErrorResponseService } from './services/error-response.service';
+import { SeriesService } from './services/series.service';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,11 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     NgxChartsModule
   ],
-  providers: [],
+  providers: [
+    BaseURL,
+    ErrorResponseService,
+    SeriesService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

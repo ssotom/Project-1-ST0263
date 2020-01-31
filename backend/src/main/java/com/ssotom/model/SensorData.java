@@ -28,6 +28,8 @@ public class SensorData {
 	
 	private Double longitude; //decimal degrees
 	
+	private String sensor;
+	
 	@CreatedDate
 	@Field("created_at")
 	private Date createdAt;
@@ -70,6 +72,14 @@ public class SensorData {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+
+	public String getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(String sensor) {
+		this.sensor = sensor;
 	}
 
 	@JsonSerialize

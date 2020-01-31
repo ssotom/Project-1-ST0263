@@ -1,8 +1,15 @@
 package com.ssotom.model;
 
+import java.util.Date;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Document("users")
 public class User {
@@ -18,6 +25,17 @@ public class User {
 	private RoleName role;
 	
 	private Boolean enabled;
+	
+	@CreatedDate
+	@Field("created_at")
+	private Date createdAt;
+	
+	public User(String username, String password, RoleName role, Boolean enabled) {
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.enabled = enabled;
+	}
 
 	public String getId() {
 		return id;
@@ -57,6 +75,16 @@ public class User {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	@JsonSerialize
+	@JsonProperty("created_at")
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 }
