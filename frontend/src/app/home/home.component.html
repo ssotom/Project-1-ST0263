@@ -1,0 +1,35 @@
+<div class="card mb-4">
+<div class="card-header">
+    Temperature
+</div>
+<div class="card-body">
+    <ngx-charts-line-chart
+    class="chart"
+    [view]="view"
+    [scheme]="colorScheme"
+    [autoScale]="autoScale"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [timeline]="timeline"
+    [results]="multi1"
+>
+</ngx-charts-line-chart>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+    Humidity
+</div>
+<div class="card-body">
+    <ngx-charts-line-chart
+    class="chart"
+    [scheme]="colorScheme2"
+    [autoScale]="autoScale"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [timeline]="timeline"
+    [results]="multi2"
+>
+</ngx-charts-line-chart>
+</div>
+</div>
