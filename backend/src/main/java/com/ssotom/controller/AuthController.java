@@ -73,7 +73,6 @@ public class AuthController {
 					HttpStatus.BAD_REQUEST);
 		}
 
-		// Creating user's account		
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setEnabled(true);
 

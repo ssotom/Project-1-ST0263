@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SeriesService } from '../services/series.service';
-import { multi } from '../data';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
-  ngOnInit() {
-  }
+export class HomeComponent {
 
   multi1: any[];
   multi2: any[];

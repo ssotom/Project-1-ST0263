@@ -7,8 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ssotom.model.User;
 import com.ssotom.security.jwt.JwtProvider;
 
-public class Sensor {
-	
+public class Sensor {	
 	String id;
 	String accessToken;
 	Date expirationDate;

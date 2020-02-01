@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssotom.model.RoleName;
@@ -50,17 +52,20 @@ public class SensorDataController {
 		Serie humidity = new Serie("humidity");
 		
 		for(SensorData d: data) {
-			temperature.add(new DataSerie(d.getTemperature(), d.getCreatedAt().toString()));
-			humidity.add(new DataSerie(d.getHumidity(), d.getCreatedAt().toString()));
+			String date = d.getCreatedAt().toString();
+			temperature.add(new DataSerie(d.getTemperature(), date));
+			humidity.add(new DataSerie(d.getHumidity(), date));
 		}
 		
 		series.add(temperature);
 		series.add(humidity);
+		
 		return series;
 	}
 	
 	@PreAuthorize("hasRole('SENSOR')")
 	@PostMapping("/data")
+	@ResponseStatus(HttpStatus.CREATED)
 	public SensorData save(@Valid @RequestBody SensorData sensorData) {
 		sensorData.setSensor(SecurityContextHolder.getContext().getAuthentication().getName());
 		return sensorDataRepository.save(sensorData);

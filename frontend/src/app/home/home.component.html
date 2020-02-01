@@ -1,4 +1,4 @@
-<div class="card mb-4" *ngIf="multi1">
+<div class="card mb-4" *ngIf="multi1?.length > 0">
     <div class="card-header">
         Temperature
     </div>
@@ -16,7 +16,7 @@
     </ngx-charts-line-chart>
     </div>
 </div>
-<div class="card" *ngIf="multi2">
+<div class="card" *ngIf="multi2?.length > 0">
     <div class="card-header">
         Humidity
     </div>
