@@ -121,7 +121,6 @@ Navigate to http://localhost:8080/
 ]
 ```
 **`[GET] api/sensors/data/series`**
-
 **Body response:**
 ```json
 [
