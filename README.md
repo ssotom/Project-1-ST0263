@@ -97,6 +97,7 @@ Navigate to http://localhost:8080/
     "created_at": "2020-02-01T03:17:15.067+0000"
 }
 ```
+
 **`[GET] api/sensors/data`** :closed_lock_with_key: *requires **admin** authentication*
 
 **Header request:**
@@ -120,7 +121,6 @@ Navigate to http://localhost:8080/
 ]
 ```
 **`[GET] api/sensors/data/series`**
-
 **Body response:**
 ```json
 [
