@@ -6,7 +6,7 @@
 - spring-boot-starter-data-security
 - jjwt
 
-**DB:** MongoBD
+**DB:** MongoDB
 
 Navigate to http://localhost:8080/
 ### Auth
@@ -158,7 +158,7 @@ Navigate to http://localhost:8080/
 **Bootstrap components powered for Angular:** [ngx-bootstrap](https://swimlane.gitbook.io/ngx-charts/)
 
 ### First
-In the root folder of the project, Run `npm install` 
+In the root folder of the project, run `npm install` 
 
 ### Development server
 
